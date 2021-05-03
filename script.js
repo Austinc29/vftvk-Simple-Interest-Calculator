@@ -1,30 +1,30 @@
-function compute() {
-    //Get the values and calculate 
-    var principal = parseFloat(document.getElementById("principal").value);
-    var rate = parseFloat(document.getElementById("rate").value);
-    var years = parseInt(document.getElementById("years").value);
-    var interest = principal * years * rate / 100;
-    var yearInTheFuture = new Date().getFullYear() + years;
-    //Create the Interest text
-    document.getElementById("result").innerHTML = "Interest : If you deposit <mark>" + principal + "</mark>,<br/>" +
-        "at an interest rate of <mark>" + rate + "</mark>,<br/>" +
-        "You will receive an amount of <mark>" + interest + "</mark>,<br/> " +
-        "in the year <mark>" + yearInTheFuture + "</mark>";
 
-}
-
-//update ther ate value
-function getSliderValue() {
-    document.getElementById("rateSpan").innerHTML = document.getElementById("rate").value;
-}
-
-//Check for positive values
-function validateAmount() {
+function compute()
+{
     var principal = document.getElementById("principal").value;
-    var biggerThanZero = parseInt(principal) > 0;
-    if (!biggerThanZero) {
-        alert("Enter a positive number");
-        document.getElementById("principal").focus();
-    }
+    var rate = document.getElementById("interestrate").value;
+    var years = document.getElementById("years").value;
+    
+    var interest = principal * years * rate / 100;
+    var year = new Date().getFullYear()+parseInt(years);
+    var amount = principal + interest;
+    document.getElementById("result").innerHTML="\<br\>If you deposit \<span id='by'\>"+principal+"\</span\>,\<br\>at an interest rate of \<span id='by'\>"+rate+"%\</span\>\<br\>You will receive an amount of \<span id='by'\>"+interest+"\</span\>,\<br\>in the year \<span id='by'\>"+year+"\</span\>\<br\>."
+}
+        
 
+function updateRate(){
+    var rateval = document.getElementById("interestrate").value;
+    document.getElementById("rate_val").innerText=rateval;
+}
+
+function validateForm() {
+  var x = document.getElementById("principal").value;
+  if (x < 1 ) {
+    document.getElementById("principal").focus();
+    alert("Enter a positive number");
+    
+    
+  }else{
+      compute();
+  }
 }
