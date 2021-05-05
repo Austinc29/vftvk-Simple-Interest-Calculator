@@ -21,6 +21,7 @@ function getSliderValue() {
 function validateAmount() {
   var principal = document.getElementById("principal").value;
   var biggerThanZero = parseInt(principal) > 0;
+  var input = document.getElementById('myInput');
   if (!biggerThanZero) {
       alert("Enter a positive number");
       document.getElementById("principal").focus();
